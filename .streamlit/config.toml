@@ -1,0 +1,19 @@
+# Streamlit settings for the Text-to-SQL app.
+# Lives at ~/Projects/text_to_sql/.streamlit/config.toml
+
+[client]
+# Hide Streamlit's developer toolbar (the "Deploy" button and menu).
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "light"
+primaryColor = "#0E6F7A"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F2F5F6"
+textColor = "#1C2B30"
+borderColor = "#DCE3E5"
+# First colour is used for single-series bar and line charts.
+chartCategoricalColors = ["#0E6F7A", "#D9922E", "#4F6FA8", "#B5485A", "#5E8C4A", "#7A5C99"]

@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Secrets: never commit these
+.env
+.env.*
+.streamlit/secrets.toml
+
+# Generated files
+chart_preview.html
+*.log
+logs/
+
+# Editors and operating system
+.vscode/
+.idea/
+.DS_Store

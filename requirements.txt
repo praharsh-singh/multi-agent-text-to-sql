@@ -1,0 +1,11 @@
+# Built and tested with Python 3.13.
+# Direct dependencies only, pinned to the versions this project was tested with.
+streamlit==1.64.0
+langgraph==1.2.11
+langchain-core==1.6.3
+langchain-openai==1.6.2
+SQLAlchemy==2.0.54
+pandas==3.0.6
+plotly==7.1.0
+Jinja2==3.1.6
+Faker==40.39.0
