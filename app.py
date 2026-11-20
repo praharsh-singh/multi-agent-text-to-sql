@@ -157,13 +157,37 @@ def _preflight_problems() -> list[str]:
             "`python data/seed_database.py` from the project root, then "
             "refresh this page."
         )
-    if LLM_PROVIDER == "openai" and not os.environ.get("OPENAI_API_KEY"):
+    if LLM_PROVIDER == "openai" and not _load_api_key():
         problems.append(
-            "`OPENAI_API_KEY` isn't set in the terminal that started this app. "
-            "Stop the app, run `source ~/.zshrc`, then start it again with "
-            "`streamlit run app.py`."
+            "`OPENAI_API_KEY` isn't set. On your computer: stop the app, run "
+            "`source ~/.zshrc`, then start it again with `streamlit run app.py`. "
+            "On Streamlit Community Cloud: open the app's **Settings → Secrets** "
+            "and add the line `OPENAI_API_KEY = \"sk-...\"`."
         )
     return problems
+
+
+def _load_api_key() -> bool:
+    """Makes sure the OpenAI key is in the environment, where the model client looks.
+
+    On a computer the key comes from the shell. On Streamlit Community Cloud
+    it is stored as an app secret, which isn't always copied into the
+    environment before this check runs, so it is copied here. Secrets are
+    only read when the shell has no key, so a local run never touches them.
+
+    Returns:
+        True if the key is available.
+    """
+    if os.environ.get("OPENAI_API_KEY"):
+        return True
+    try:
+        key = st.secrets.get("OPENAI_API_KEY")
+    except Exception:  # noqa: BLE001 - no secrets file, or it can't be parsed
+        key = None
+    if isinstance(key, str) and key.strip():
+        os.environ["OPENAI_API_KEY"] = key.strip()
+        return True
+    return False
 
 
 def _plural(count: int, noun: str) -> str:
