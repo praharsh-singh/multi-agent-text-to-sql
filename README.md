@@ -4,6 +4,10 @@ Ask a business question in plain English and get the answer as a chart, a single
 
 The demo runs on a synthetic database for a car wash and detailing chain with eight locations across India.
 
+**[Try the live demo](https://multi-agent-text-to-sql.streamlit.app)**. If it shows a wake-up button, click it and wait about a minute.
+
+https://github.com/user-attachments/assets/240e8a60-3fc0-4e0c-925d-26e8969efb4d
+
 ![An answer with its chart](docs/screenshots/answer.png)
 
 ## What makes it different
